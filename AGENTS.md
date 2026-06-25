@@ -35,8 +35,8 @@ templates/
 static/
   css/
     style.css             ← All site styling
-  images/                 ← Sherri's photos; reference via url_for('static', ...)
-Procfile                  ← web: gunicorn app:app  (required by Render)
+  images/                 ← ALL media files go here (photos, logos, etc.)
+    .gitkeep              ← Keeps the folder tracked by git when empty
 requirements.txt          ← flask, gunicorn
 AGENTS.md                 ← This file
 README.md
@@ -117,10 +117,13 @@ All sections live in `templates/index.html`. Each section should have a correspo
 ## Coding Conventions
 
 - **Content/copy** lives directly in `templates/index.html` — no separate data files.
-- **Images** are stored in `static/images/` and referenced using Flask's `url_for` helper:
+- **All media files** (photos, logos, icons) are stored in `static/images/`. Do not place media files anywhere else.
+  - Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.svg`
+  - Reference them in templates using Flask's `url_for` helper:
   ```html
   <img src="{{ url_for('static', filename='images/photo.jpg') }}" alt="...">
   ```
+  - The folder contains a `.gitkeep` file so git tracks it when empty — do not delete it.
 - **CSS** all goes in `static/css/style.css`. No inline styles.
 - **No JavaScript frameworks.** Plain HTML and CSS only, unless a specific interactive feature is requested.
 - **Keep `app.py` to one route.** If new routes are ever needed, add them there; do not create separate route files unless the app grows significantly.
