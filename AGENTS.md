@@ -81,15 +81,15 @@ def index():
 
 ## Deployment — Render.com
 
+- **Live URL:** https://sherri-beresford-tutoring.onrender.com
 - The Render Web Service is **already connected** to this GitHub repository.
 - **Auto-deploy trigger:** any commit pushed or merged to the `main` branch causes Render to redeploy automatically.
 - Changes on any other branch are visible **only locally** until merged to `main`.
-- Render reads `Procfile` for the start command:
-  ```
-  web: gunicorn app:app
-  ```
+- **Build command:** `pip install -r requirements.txt`
+- **Start command:** `gunicorn app:app`
 - Set the environment variable `FLASK_ENV=production` in the Render dashboard (Settings → Environment).
 - Python version can be pinned via a `runtime.txt` file if needed (e.g., `python-3.12.0`).
+- A `Procfile` is not strictly required since the start command is set directly in Render, but can be kept for reference.
 
 ### Typical development loop
 
